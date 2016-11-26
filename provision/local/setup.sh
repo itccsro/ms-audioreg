@@ -11,7 +11,7 @@ echo "Installing application stack..."
 export DEBIAN_FRONTEND=noninteractive
 apt-get install -y \
     apache2 mysql-server mysql-client \
-    libapache2-mod-php php-mcrypt php-curl php-mysql \
+    libapache2-mod-php php-mcrypt php-mbstring php-curl php-mysql \
     screen git htop unzip \
     redis-server redis-tools
 a2enmod rewrite
