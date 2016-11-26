@@ -36,7 +36,7 @@ cd -
 echo "Installing Xdebug..."
 apt-get install -y php-dev
 pecl install xdebug
-cat <<EOF > /etc/php/mods-available/xdebug.ini
+cat <<EOF > /etc/php/7.0/mods-available/xdebug.ini
 zend_extension=xdebug.so
 xdebug.remote_enable=1
 xdebug.remote_host=192.168.60.1
