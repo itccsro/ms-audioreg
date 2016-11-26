@@ -15,12 +15,12 @@ class CreateUploadsTable extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('path', 200)->nullable();
-            $table->smallInteger('ignored_patients')->nullable();
-            $table->smallInteger('ignored_tests')->nullable();
-            $table->smallInteger('valid_patients')->nullable();
-            $table->smallInteger('valid_tests')->nullable();
+            $table->unsignedSmallInteger('ignored_patients')->nullable();
+            $table->unsignedSmallInteger('ignored_tests')->nullable();
+            $table->unsignedSmallInteger('valid_patients')->nullable();
+            $table->unsignedSmallInteger('valid_tests')->nullable();
             $table->nullableTimestamps();
         });
     }
