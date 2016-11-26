@@ -17,10 +17,11 @@ class CreateScreeningsTable extends Migration
             $table->increments('id');
             $table->char('cnp', 13)->nullable();
             $table->unsignedInteger('upload_id')->nullable();
+            $table->uuid('unique_id')->nullable();
             $table->string('first_name', 50)->nullable();
             $table->string('last_name', 50)->nullable();
             $table->date('birthdate')->nullable();
-            $table->enum('gender', ['F', 'M'])->nullable();
+            $table->enum('gender', ['Female', 'Male'])->nullable();
             $table->string('telephone', 15)->nullable();
             $table->string('mobile_phone', 15)->nullable();
             $table->string('mothers_first_name', 50)->nullable();
