@@ -10,7 +10,7 @@ class UploadsController extends Controller
 {
     public function index()
     {
-        return 'user home';
+        return view('uploads.index');
     }
 
     public function create()

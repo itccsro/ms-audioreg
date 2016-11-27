@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    WELCOME
+    Admin.Home.index
 @stop
