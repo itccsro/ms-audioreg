@@ -91,7 +91,7 @@ class RegisterController extends Controller
     {
         $user = $this->guard()->user();
 
-        return $user->role == Role::ADMIN ? '/admin' : '/uploads';
+        return $user->isAdmin() ? '/admin' : '/uploads';
     }
 
     /**
