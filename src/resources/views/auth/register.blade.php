@@ -28,7 +28,7 @@
                             <label for="role" class="col-md-4 control-label">Role</label>
 
                             <div class="col-md-6">
-                                <select id="role" class="form-control" name="role" value="{{ old('role') }}" required>
+                                <select id="role" class="form-control" name="role" required>
                                 @foreach($roles as $role)
                                     <option value="{{$role}}">{{$role}}</option>
                                 @endforeach
@@ -36,6 +36,24 @@
                                 @if ($errors->has('role'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('institution_id') ? ' has-error' : '' }}">
+                            <label for="role" class="col-md-4 control-label">Insitution</label>
+
+                            <div class="col-md-6">
+                                <select id="role" class="form-control" name="institution_id" required>
+                                    <option value="">Select Institution</option>
+                                    @foreach($institutions as $id => $name)
+                                        <option value="{{$id}}" @if(old('institution_id') == $id) selected="selected" @endif>{{$name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('institution_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('institution_id') }}</strong>
                                     </span>
                                 @endif
                             </div>

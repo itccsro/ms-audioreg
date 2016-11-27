@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Institution;
 use App\Role;
 use App\User;
 use Validator;
@@ -22,6 +23,7 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    protected $institution;
 
     /**
      * Where to redirect users after login / registration.
@@ -33,33 +35,37 @@ class RegisterController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param Institution $institution
      */
-    public function __construct()
+    public function __construct(Institution $institution)
     {
+        $this->institution = $institution;
         $this->middleware('guest');
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
+        $institutions = $this->institution->pluck('id');
+        $institutionRules = 'in:' . implode(',', $institutions->toArray());
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'role' => 'in:'.Role::ADMIN . ',' . Role::DOCTOR
+            'role' => 'in:' . Role::ADMIN . ',' . Role::DOCTOR,
+            'institution_id' => $institutionRules
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
@@ -68,6 +74,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
+            'institution_id' => $data['institution_id'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -80,7 +87,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('auth.register', ['roles' => [Role::DOCTOR, Role::ADMIN]]);
+        return view('auth.register',
+            ['roles' => [Role::DOCTOR, Role::ADMIN], 'institutions' => $this->institution->pluck('name', 'id')]);
     }
 
 }
