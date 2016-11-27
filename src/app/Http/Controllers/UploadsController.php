@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Services\XMLParser;
 use App\Upload;
 use DB;
-use PhpParser\Serializer\XML;
 
 class UploadsController extends Controller
 {
