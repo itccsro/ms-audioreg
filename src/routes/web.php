@@ -11,7 +11,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/uploads', 'UploadsController@index');
     Route::get('/uploads/new', 'UploadsController@create');
     Route::post('/uploads', 'UploadsController@store');
-    Route::get('/uploads/{id}', 'UploadsController@show');
+    Route::get('/uploads/{upload}', 'UploadsController@show');
 
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/', 'HomeController@index');

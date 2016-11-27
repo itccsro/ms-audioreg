@@ -17,6 +17,7 @@ class CreateUploadsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->nullable()->index();
             $table->string('path', 200)->nullable();
+            $table->string('original_file_name', 200)->nullable();
             $table->unsignedSmallInteger('ignored_patients')->nullable();
             $table->unsignedSmallInteger('ignored_tests')->nullable();
             $table->unsignedSmallInteger('valid_patients')->nullable();
