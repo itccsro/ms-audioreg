@@ -28,6 +28,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Defines the relationship between User and Institution.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function institution()
+    {
+        return $this->belongsTo('App\Institution');
+    }
+
+    /**
      * Defines the relationship between User and Upload.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
