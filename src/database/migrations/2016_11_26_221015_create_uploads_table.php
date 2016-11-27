@@ -15,7 +15,7 @@ class CreateUploadsTable extends Migration
     {
         Schema::create('uploads', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable()->index();
             $table->string('path', 200)->nullable();
             $table->unsignedSmallInteger('ignored_patients')->nullable();
             $table->unsignedSmallInteger('ignored_tests')->nullable();

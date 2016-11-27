@@ -15,8 +15,8 @@ class CreateScreeningTestsTable extends Migration
     {
         Schema::create('screening_tests', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('screening_id')->nullable();
-            $table->unsignedInteger('upload_id')->nullable();
+            $table->unsignedInteger('screening_id')->nullable()->index();
+            $table->unsignedInteger('upload_id')->nullable()->index();
             $table->uuid('unique_id')->nullable();
             $table->string('test_type', 20)->nullable();
             $table->enum('ear_type', ['Left', 'Right'])->nullable();

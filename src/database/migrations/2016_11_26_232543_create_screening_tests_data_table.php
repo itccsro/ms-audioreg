@@ -15,8 +15,8 @@ class CreateScreeningTestsDataTable extends Migration
     {
         Schema::create('screening_tests_data', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('screening_test_id')->nullable();
-            $table->text('test_data')->nullable();
+            $table->unsignedInteger('screening_test_id')->nullable()->index();
+            $table->text('data')->nullable();
             $table->timestamps();
         });
     }

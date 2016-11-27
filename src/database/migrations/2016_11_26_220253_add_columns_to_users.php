@@ -17,6 +17,9 @@ class AddColumnsToUsers extends Migration
             $table->char('cnp', 13)->nullable()->after('remember_token');
             $table->enum('role', ['admin', 'doctor'])->after('cnp')->nullable();
             $table->unsignedInteger('institution_id')->after('role')->nullable();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
             $table->foreign('institution_id')->references('id')->on('institutions');
         });
     }
@@ -28,6 +31,10 @@ class AddColumnsToUsers extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_institution_id_foreign');
+        });
+
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('cnp');
             $table->dropColumn('role');
