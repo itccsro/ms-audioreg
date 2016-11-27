@@ -16,7 +16,10 @@
                 @foreach ($uploads as $upload)
                     <tr>
                         <td>{{ $upload->id }}</td>
-                        <td>{{ $upload->original_name }}</td>
+                        <td>
+                            <a href="{{ route('uploadDownload', ['upload' => $upload]) }}">
+                                {{ $upload->original_name }}</a>
+                        </td>
                         <td>
                             Pacienți salvați:
                             <strong>{{ $upload->valid_patients }}</strong><br>
