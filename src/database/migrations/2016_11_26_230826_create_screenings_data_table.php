@@ -15,8 +15,8 @@ class CreateScreeningsDataTable extends Migration
     {
         Schema::create('screenings_data', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('screening_id')->nullable();
-            $table->text('patient_data')->nullable();
+            $table->unsignedInteger('screening_id')->nullable()->index();
+            $table->text('data')->nullable();
             $table->timestamps();
         });
     }
