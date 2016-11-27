@@ -4,13 +4,7 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
-            <div class="panel-heading">Încărcare fișiere screening</div>
-            <div class="container-fluid text-center bg-info">
-                <span>
-                    Ultimul fișier a fost încărcat în data de 29 decembrie 2016.
-                    Vezi <a href="{{ route('uploads') }}">aici</a> toate fișierele încărcate.
-                </span>
-            </div>
+            <div class="panel-heading">Încărcare fișier screening</div>
             <div class="panel-body">
                 <form class="form-horizontal" enctype="multipart/form-data" role="form"
                       method="POST" action="{{ url('/uploads') }}">
@@ -38,6 +32,13 @@
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="panel panel-body text-center">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                <span>
+                    Ultimul fișier a fost încărcat în data de 29 decembrie 2016.
+                    Vezi <a href="{{ route('uploads') }}">aici</a> toate fișierele încărcate.
+                </span>
             </div>
         </div>
     </div>
