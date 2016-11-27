@@ -8,7 +8,7 @@ class UploadsController extends Controller
 {
     public function index()
     {
-        return 'index';
+        return 'user home';
     }
 
     public function create()
