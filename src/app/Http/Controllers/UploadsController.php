@@ -55,9 +55,7 @@ class UploadsController extends Controller
 
         $screening_data = $this->xmlParser->parseToArray($upload->path, 'uploads');
 
-        return redirect()->action(
-            'UploadsController@show', ['upload' => $upload]
-        )->with('status', 'File uploaded!');
+        return redirect()->action('UploadsController@index')->with('status', 'Fișierul a fost încarcat.');
     }
 
     public function show(Upload $upload)
