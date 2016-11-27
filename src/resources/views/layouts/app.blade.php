@@ -60,13 +60,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     @if(Auth::user()->isAdmin())
-                                        <li><a href="{{ url('/register') }}">Register</a></li>
+                                        <li><a href="{{ url('/register') }}">Adauga Utilizator</a></li>
                                     @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Iesire
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

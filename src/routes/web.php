@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes();
@@ -18,7 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'HomeController@index');
         Route::get('/patients', 'ScreeningsController@index')->name('patients');
         Route::get('/patients/{cnp}', 'ScreeningsController@show');
-        Route::get('/users', 'UsersController@index');
+        Route::get('/users', 'UsersController@index')->name('users');
     });
 });
 
