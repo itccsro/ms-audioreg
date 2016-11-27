@@ -16,9 +16,14 @@ class UploadsController extends Controller
         $this->xmlParser = $xmlParser;
     }
 
-    public function index()
+    public function index(Request $request)
+
     {
-        return view('uploads.index');
+        $uploads = $request->user()->uploads()->get();
+
+        return view('uploads.index', [
+            'uploads' => $uploads
+        ]);
     }
 
     public function create()

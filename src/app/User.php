@@ -36,7 +36,7 @@ class User extends Authenticatable
     {
         return $this->role == Role::DOCTOR;
     }
-    
+
     /**
      * Defines the relationship between User and Institution.
      *

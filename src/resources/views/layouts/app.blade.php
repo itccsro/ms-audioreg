@@ -44,7 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     @if(!Auth::guest())
                         <ul class="nav navbar-nav">
-                            &nbsp;@include('partials.left_menu')
+                            &nbsp;@include('partials.left-menu')
                         </ul>
                     @endif
                     <!-- Right Side Of Navbar -->
@@ -52,7 +52,6 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -60,6 +59,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @if(Auth::user()->isAdmin())
+                                        <li><a href="{{ url('/register') }}">Register</a></li>
+                                    @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -79,7 +81,9 @@
             </div>
         </nav>
 
+        <div class="container">
             @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
