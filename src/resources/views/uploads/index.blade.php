@@ -10,12 +10,29 @@
                 <tr>
                     <th>Identificator</th>
                     <th>Nume fișier</th>
+                    <th>Rezultat încărcare</th>
                     <th>Data adăugării</th>
                 </tr>
                 @foreach ($uploads as $upload)
                     <tr>
                         <td>{{ $upload->id }}</td>
-                        <td>{{ $upload->original_name }}</td>
+                        <td>
+                            <a href="{{ route('uploadDownload', ['upload' => $upload]) }}">
+                                {{ $upload->original_name }}</a>
+                        </td>
+                        <td>
+                            Pacienți salvați:
+                            <strong>{{ $upload->valid_patients }}</strong><br>
+
+                            Pacienți ignorați:
+                            <strong>{{ $upload->ignored_patients }}</strong><br>
+
+                            Teste salvate:
+                            <strong>{{ $upload->valid_tests }}</strong><br>
+
+                            Teste ignorate:
+                            <strong>{{ $upload->ignored_tests }}</strong>
+                        </td>
                         <td>{{ $upload->created_at->format('d.m.Y H:i') }}</td>
                     </tr>
                 @endforeach

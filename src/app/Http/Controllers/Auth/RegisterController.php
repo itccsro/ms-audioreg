@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Institution;
 use App\Role;
 use App\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,12 +55,14 @@ class RegisterController extends Controller
     {
         $institutions = $this->institution->pluck('id');
         $institutionRules = 'required_if:role,'. Role::DOCTOR . '|in:' . implode(',', $institutions->toArray());
+        $cnpRules = 'required_if:role,' . Role::DOCTOR . '|numeric|digits:13';
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
             'role' => 'in:' . Role::ADMIN . ',' . Role::DOCTOR,
-            'institution_id' => $institutionRules
+            'institution_id' => $institutionRules,
+            'cnp' => $cnpRules
         ]);
     }
 
@@ -74,10 +78,14 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
+            'cnp' => $data['cnp'],
             'password' => bcrypt($data['password']),
         ];
         if($data['role'] == Role::DOCTOR) {
             $user['institution_id'] = $data['institution_id'];
+        }
+        if($data['role'] == Role::ADMIN) {
+            unset($user['cnp']);
         }
         return User::create($user);
     }
@@ -104,4 +112,20 @@ class RegisterController extends Controller
         return view('auth.register',
             ['roles' => [Role::DOCTOR, Role::ADMIN], 'institutions' => $this->institution->pluck('name', 'id')]);
     }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $this->create($request->all());
+
+        return redirect(route('users'));
+    }
+
 }

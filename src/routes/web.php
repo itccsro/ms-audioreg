@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('login'));
 });
 
 Auth::routes();
@@ -12,12 +12,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/uploads/new', 'UploadsController@create');
     Route::post('/uploads', 'UploadsController@store');
     Route::get('/uploads/{upload}', 'UploadsController@show');
+    Route::get('/uploads/{upload}/download', 'UploadsController@download')
+        ->name('uploadDownload');
 
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/', 'HomeController@index');
         Route::get('/patients', 'ScreeningsController@index')->name('patients');
         Route::get('/patients/{cnp}', 'ScreeningsController@show');
-        Route::get('/users', 'UsersController@index');
+        Route::get('/users', 'UsersController@index')->name('users');
     });
 });
 
