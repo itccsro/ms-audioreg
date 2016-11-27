@@ -1,28 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Services;
 
-use Illuminate\Http\Request;
-
-class HomeController extends Controller
+class XMLParser
 {
     /**
-     * Create a new controller instance.
+     * Parse the XML and return the data as an array
      *
-     * @return void
+     * @return array
      */
-    public function __construct()
+    public function parseToArray($path, $disk)
     {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
+        $xml_string = \Storage::disk($disk)->get($path);
+        $xml = simplexml_load_string($xml_string);
+        $json = json_encode($xml);
+        return json_decode($json,TRUE);
     }
 }

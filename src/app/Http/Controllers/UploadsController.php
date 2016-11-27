@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Services\XMLParser;
 use App\Upload;
 use DB;
+use PhpParser\Serializer\XML;
 
 class UploadsController extends Controller
 {
+
+    public function __construct(XMLParser $xmlParser)
+    {
+        $this->xmlParser = $xmlParser;
+    }
+
     public function index()
     {
         return view('uploads.index');
@@ -39,6 +47,8 @@ class UploadsController extends Controller
             $upload->path = $path;
             $upload->save();
         });
+
+        $screening_data = $this->xmlParser->parseToArray($upload->path, 'uploads');
 
         return redirect()->action(
             'UploadsController@show', ['upload' => $upload]
