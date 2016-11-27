@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'HomeController@index');
         Route::get('/patients', 'ScreeningsController@index')->name('patients');
         Route::get('/patients/{cnp}', 'ScreeningsController@show');
-        Route::get('/users', 'UsersController@index');
+        Route::get('/users', 'UsersController@index')->name('users');
     });
 });
 
