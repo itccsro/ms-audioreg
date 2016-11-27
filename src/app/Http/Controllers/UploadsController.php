@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\XMLParser;
 use App\Upload;
 use DB;
+use Storage;
 use PhpParser\Serializer\XML;
 
 class UploadsController extends Controller
@@ -64,5 +65,22 @@ class UploadsController extends Controller
     {
 
         return '';
+    }
+
+    public function download(Request $request, Upload $upload)
+    {
+        if ($request->user()->cant('download', $upload)) {
+            return abort(403);
+        }
+
+        // Get path to file
+        $localDisk = Storage::disk('uploads');
+        $pathPrefix = $localDisk->getAdapter()->getPathPrefix();
+
+        // Send file to browser
+        return response()->download(
+            $pathPrefix . $upload->path,
+            $upload->original_name
+        );
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Services;
 
+use Storage;
+
 class XMLParser
 {
     /**
@@ -11,9 +13,10 @@ class XMLParser
      */
     public function parseToArray($path, $disk)
     {
-        $xml_string = \Storage::disk($disk)->get($path);
+        $xml_string = Storage::disk($disk)->get($path);
         $xml = simplexml_load_string($xml_string);
         $json = json_encode($xml);
-        return json_decode($json,TRUE);
+
+        return json_decode($json, true);
     }
 }
