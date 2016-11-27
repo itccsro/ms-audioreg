@@ -6,9 +6,9 @@ if (! function_exists('active')) {
      * @param string $class
      * @return string
      */
-    function active($route, $class =' active')
+    function active($route, $class = 'active')
     {
-        if(Request::is($route)) {
+        if(Route::is($route)) {
             return $class;
         }
         return '';
