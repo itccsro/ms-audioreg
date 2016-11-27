@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Role;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -51,6 +52,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'role' => 'in:'.Role::ADMIN . ',' . Role::DOCTOR
         ]);
     }
 
@@ -65,6 +67,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'role' => $data['role'],
             'password' => bcrypt($data['password']),
         ]);
     }
@@ -77,7 +80,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('auth.register', ['roles' => ['a', 'z']]);
+        return view('auth.register', ['roles' => [Role::DOCTOR, Role::ADMIN]]);
     }
 
 }

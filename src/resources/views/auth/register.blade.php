@@ -30,7 +30,7 @@
                             <div class="col-md-6">
                                 <select id="role" class="form-control" name="role" value="{{ old('role') }}" required>
                                 @foreach($roles as $role)
-                                    <option value="">{{$role}}</option>
+                                    <option value="{{$role}}">{{$role}}</option>
                                 @endforeach
                                 </select>
                                 @if ($errors->has('role'))
