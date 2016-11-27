@@ -30,11 +30,11 @@ class UploadsController extends Controller
 
         DB::transaction(function () use ($file, $upload) {
             $upload->fill([
-                'original_file_name' => $file->path(),
+                'original_name' => $file->getClientOriginalName(),
             ]);
             $upload->save();
 
-            $path = $file->storeAs('uploads', $upload->generateStorageName());
+            $path = $file->storeAs('', $upload->generateStorageName(), 'uploads');
 
             $upload->path = $path;
             $upload->save();
@@ -47,7 +47,7 @@ class UploadsController extends Controller
 
     public function show(Upload $upload)
     {
-        
+
         return '';
     }
 }
