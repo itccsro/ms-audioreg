@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    WELCOME
+    Bine ai venit!
 @stop

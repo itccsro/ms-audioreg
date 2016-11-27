@@ -44,7 +44,7 @@
                     <!-- Left Side Of Navbar -->
                     @if(!Auth::guest())
                         <ul class="nav navbar-nav">
-                            &nbsp;@include('partials.left_menu')
+                            &nbsp;@include('partials.left-menu')
                         </ul>
                     @endif
                     <!-- Right Side Of Navbar -->
@@ -81,7 +81,9 @@
             </div>
         </nav>
 
+        <div class="container">
             @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
