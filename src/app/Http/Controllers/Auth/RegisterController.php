@@ -79,6 +79,17 @@ class RegisterController extends Controller
         ]);
     }
 
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        $user = $this->guard()->user();
+
+        return $user->role == Role::ADMIN ? '/admin' : '/uploads';
+    }
 
     /**
      * Show the application registration form.
@@ -90,5 +101,4 @@ class RegisterController extends Controller
         return view('auth.register',
             ['roles' => [Role::DOCTOR, Role::ADMIN], 'institutions' => $this->institution->pluck('name', 'id')]);
     }
-
 }
