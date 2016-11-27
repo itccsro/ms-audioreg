@@ -42,10 +42,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('institution_id') ? ' has-error' : '' }}">
-                            <label for="role" class="col-md-4 control-label">Insitution</label>
+                            <label for="role" class="col-md-4 control-label">Institution</label>
 
                             <div class="col-md-6">
-                                <select id="role" class="form-control" name="institution_id" required>
+                                <select id="role" class="form-control" name="institution_id">
                                     <option value="">Select Institution</option>
                                     @foreach($institutions as $id => $name)
                                         <option value="{{$id}}" @if(old('institution_id') == $id) selected="selected" @endif>{{$name}}</option>

@@ -52,7 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $institutions = $this->institution->pluck('id');
-        $institutionRules = 'in:' . implode(',', $institutions->toArray());
+        $institutionRules = 'required_if:role,'. Role::DOCTOR . '|in:' . implode(',', $institutions->toArray());
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
@@ -70,13 +70,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = [
             'name' => $data['name'],
             'email' => $data['email'],
             'role' => $data['role'],
-            'institution_id' => $data['institution_id'],
             'password' => bcrypt($data['password']),
-        ]);
+        ];
+        if($data['role'] == Role::DOCTOR) {
+            $user['institution_id'] = $data['institution_id'];
+        }
+        return User::create($user);
     }
 
     /**
