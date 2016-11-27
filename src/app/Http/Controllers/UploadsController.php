@@ -24,15 +24,15 @@ class UploadsController extends Controller
             'screenings' => 'required|file|mimetypes:application/xml',
         ]);
 
+        $user = $request->user();
         $file = $request->file('screenings');
 
         $upload = new Upload();
-
-        DB::transaction(function () use ($file, $upload) {
+        DB::transaction(function () use ($user, $file, $upload) {
             $upload->fill([
                 'original_name' => $file->getClientOriginalName(),
             ]);
-            $upload->save();
+            $user->uploads()->save($upload);
 
             $path = $file->storeAs('', $upload->generateStorageName(), 'uploads');
 

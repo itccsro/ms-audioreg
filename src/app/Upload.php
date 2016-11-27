@@ -14,4 +14,13 @@ class Upload extends Model
         return $this->id . '.xml';
     }
 
+    /**
+     * Defines the relationship between User and Upload.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
