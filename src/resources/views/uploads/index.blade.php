@@ -21,17 +21,7 @@
                                 {{ $upload->original_name }}</a>
                         </td>
                         <td>
-                            Pacienți salvați:
-                            <strong>{{ $upload->valid_patients }}</strong><br>
-
-                            Pacienți ignorați:
-                            <strong>{{ $upload->ignored_patients }}</strong><br>
-
-                            Teste salvate:
-                            <strong>{{ $upload->valid_tests }}</strong><br>
-
-                            Teste ignorate:
-                            <strong>{{ $upload->ignored_tests }}</strong>
+                            Succes
                         </td>
                         <td>{{ $upload->created_at->format('d.m.Y H:i') }}</td>
                     </tr>

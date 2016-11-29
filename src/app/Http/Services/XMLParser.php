@@ -4,8 +4,11 @@ namespace App\Http\Services;
 
 use Storage;
 
-class XMLParser
+abstract class XMLParser
 {
+
+    protected $XMLArray = array();
+
     /**
      * Parse the XML and return the data as an array
      *
@@ -17,6 +20,7 @@ class XMLParser
         $xml = simplexml_load_string($xml_string);
         $json = json_encode($xml);
 
-        return json_decode($json, true);
+        $this->XMLArray = json_decode($json, true);
+        return $this->XMLArray;
     }
 }

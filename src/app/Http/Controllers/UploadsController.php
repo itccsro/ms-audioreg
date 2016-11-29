@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Services\XMLParser;
+use App\Http\Services\EchoScreenXMLParser;
 use App\Upload;
 use DB;
 use Storage;
@@ -11,7 +11,9 @@ use Storage;
 class UploadsController extends Controller
 {
 
-    public function __construct(XMLParser $xmlParser)
+    const UPLOADS_DISK = 'uploads';
+
+    public function __construct(EchoScreenXMLParser $xmlParser)
     {
         $this->xmlParser = $xmlParser;
     }
@@ -47,13 +49,13 @@ class UploadsController extends Controller
             ]);
             $user->uploads()->save($upload);
 
-            $path = $file->storeAs('', $upload->generateStorageName(), 'uploads');
+            $path = $file->storeAs('', $upload->generateStorageName(), self::UPLOADS_DISK);
 
             $upload->path = $path;
             $upload->save();
         });
 
-        $screening_data = $this->xmlParser->parseToArray($upload->path, 'uploads');
+        $this->xmlParser->processScreenings($upload->id, $upload->path, self::UPLOADS_DISK);
 
         return redirect()->action('UploadsController@index')->with('status', 'Fișierul a fost încarcat.');
     }
@@ -71,7 +73,7 @@ class UploadsController extends Controller
         }
 
         // Get path to file
-        $localDisk = Storage::disk('uploads');
+        $localDisk = Storage::disk(self::UPLOADS_DISK);
         $pathPrefix = $localDisk->getAdapter()->getPathPrefix();
 
         // Send file to browser

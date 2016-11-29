@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScreeningData extends Model
 {
+    protected $table = 'screenings_data';
+
     /**
      * Defines the relationship between ScreeningData and Screening.
      *

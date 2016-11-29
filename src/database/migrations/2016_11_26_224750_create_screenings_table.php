@@ -21,7 +21,7 @@ class CreateScreeningsTable extends Migration
             $table->string('first_name', 50)->nullable();
             $table->string('last_name', 50)->nullable();
             $table->date('birthdate')->nullable();
-            $table->enum('gender', ['female', 'male'])->nullable();
+            $table->enum('gender', ['female', 'male', 'unknown'])->nullable();
             $table->string('telephone', 15)->nullable();
             $table->string('mobile_phone', 15)->nullable();
             $table->string('mothers_first_name', 50)->nullable();

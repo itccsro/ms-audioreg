@@ -20,8 +20,9 @@ class CreateScreeningTestsTable extends Migration
             $table->uuid('unique_id')->nullable();
             $table->string('test_type', 20)->nullable();
             $table->enum('ear_type', ['Left', 'Right'])->nullable();
-            $table->enum('left_result', ['NotTested', 'Pass', 'Refer'])->nullable();
-            $table->decimal('duration', 5, 2)->nullable();
+            $table->enum('left_result', ['NotTested', 'Pass', 'Refer', 'Incomplete'])->nullable();
+            $table->enum('right_result', ['NotTested', 'Pass', 'Refer', 'Incomplete'])->nullable();
+            $table->string('duration', 8)->nullable();
             $table->string('test_facility', 50)->nullable();
             $table->string('device_serial_number', 20)->nullable();
             $table->string('probe_serial_number', 20)->nullable();
