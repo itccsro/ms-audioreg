@@ -230,7 +230,6 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
         'Grids' => Nayjest\Grids\Grids::class,
-        'Input' => Illuminate\Support\Facades\Input::class,
     ],
 
 ];
