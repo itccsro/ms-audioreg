@@ -9,7 +9,7 @@ class ScreeningsController extends Controller
 {
     public function index()
     {
-        return view('admin.screenings.index');
+        return view('admin.screenings.index', ['table_id' => 'table_id']);
     }
 
     public function show()

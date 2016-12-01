@@ -1,5 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.datatables')
 
 @section('content')
-    Patient search
+    DataTables Patient Search
 @stop
