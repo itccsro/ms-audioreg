@@ -4,8 +4,16 @@ namespace App\DataTables\Scopes;
 
 use Yajra\Datatables\Contracts\DataTableScopeContract;
 
-class UsersAdminDataTableScope implements DataTableScopeContract
+class UsersTypeDataTableScope implements DataTableScopeContract
 {
+
+    protected $UserTypeScope;
+
+    public function __construct($UserType)
+    {
+        $this->UserTypeScope = $UserType;
+    }
+
     /**
      * Apply a query scope.
      *
@@ -14,6 +22,6 @@ class UsersAdminDataTableScope implements DataTableScopeContract
      */
     public function apply($query)
     {
-        return $query->where('role', \App\Role::ADMIN);
+        return $query->where('role', $this->UserTypeScope);
     }
 }
