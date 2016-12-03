@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\User;
 use Yajra\Datatables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class AdminUsersDataTable extends DataTable
 {
     /**
      * Display ajax response.
@@ -42,8 +42,7 @@ class UsersDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->ajax('')
-                    ->addAction(['width' => '80px'])
-                    ;
+                    ->addAction(['width' => '80px']);
     }
 
     /**
