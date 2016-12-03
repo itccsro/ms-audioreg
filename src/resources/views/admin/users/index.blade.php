@@ -1,5 +1,9 @@
-@extends('layouts.master');
+@extends('layouts.datatables');
 
 @section('content')
- users.index
+ {!! $dataTable->table() !!}
 @endsection
+
+@push('footer-scripts')
+{!! $dataTable->scripts() !!}
+@endpush

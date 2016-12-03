@@ -1,5 +1,5 @@
 @extends('layouts.datatables')
 
 @section('content')
-    DataTables Patient Search
+    screenings.index
 @stop
