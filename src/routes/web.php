@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/patients', 'ScreeningsController@index')->name('patients');
         Route::get('/patients/{cnp}', 'ScreeningsController@show');
         Route::get('/users', 'UsersController@index')->name('users');
+        Route::get('/users/users-admin', 'UsersController@showAdminUsers')->name('users-admin');
     });
 });
 

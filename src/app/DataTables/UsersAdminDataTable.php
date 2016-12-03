@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\User;
 use Yajra\Datatables\Services\DataTable;
 
-class AdminUsersDataTable extends DataTable
+class UsersAdminDataTable extends DataTable
 {
     /**
      * Display ajax response.
@@ -16,7 +16,7 @@ class AdminUsersDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->setTransformer(new \App\Transformers\UsersDataTableTransformer)
+            ->setTransformer(new \App\Transformers\UsersAdminDataTableTransformer)
             ->make(true);
     }
 
@@ -41,8 +41,7 @@ class AdminUsersDataTable extends DataTable
     {
         return $this->builder()
                     ->columns($this->getColumns())
-                    ->ajax('')
-                    ->addAction(['width' => '80px']);
+                    ->ajax('');
     }
 
     /**
@@ -67,6 +66,6 @@ class AdminUsersDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'utilizatori_' . time();
+        return 'utilizatori_admin_' . time();
     }
 }

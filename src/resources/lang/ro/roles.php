@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Datele de autentificare nu sunt valide.',
-    'throttle' => 'Prea multe încercări de autentificare. Încearcă din nou în :seconds secunde.',
+    \App\Role::ADMIN => 'Administrator',
+    \App\Role::DOCTOR => 'Doctor',
 
 ];

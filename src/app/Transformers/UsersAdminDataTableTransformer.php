@@ -5,7 +5,7 @@ namespace App\Transformers;
 use League\Fractal\TransformerAbstract;
 use App\User;
 
-class UsersDataTableTransformer extends TransformerAbstract
+class UsersAdminDataTableTransformer extends TransformerAbstract
 {
     protected $index = 0;
     /**
