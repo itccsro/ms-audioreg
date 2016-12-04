@@ -16,9 +16,9 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('uploadDownload');
 
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
-        Route::get('/', 'HomeController@index');
+        Route::get('/', 'HomeController@index')->name('dashboard');
         Route::get('/patients', 'ScreeningsController@index')->name('patients');
-        Route::get('/patients/{cnp}', 'ScreeningsController@show');
+        Route::get('/patients/{cnp}', 'ScreeningsController@show')->name('patient');
         Route::get('/users/users-doctor', 'UsersController@showDoctorUsers')->name('users-doctor');
         Route::get('/users/users-admin', 'UsersController@showAdminUsers')->name('users-admin');
     });
