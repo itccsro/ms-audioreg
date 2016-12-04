@@ -1,7 +1,7 @@
-@extends('layouts.datatables');
+@extends('layouts.datatables')
 
 @section('main_container')
- {!! $dataTable->table() !!}
+{!! $dataTable->table() !!}
 @endsection
 
 @push('footer-scripts')
