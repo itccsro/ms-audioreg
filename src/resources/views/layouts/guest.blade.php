@@ -8,9 +8,9 @@
     <div class="container body">
         <div class="main_container">
 
-            @include('partials/master-sidebar')
+            @include('partials/guest-sidebar')
 
-            @include('partials/master-topbar')
+            @include('partials/guest-topbar')
 
             <div class="right_col" role="main">
                 @yield('main_container')

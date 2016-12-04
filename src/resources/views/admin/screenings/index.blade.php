@@ -1,5 +1,5 @@
 @extends('layouts.datatables')
 
-@section('content')
+@section('main_container')
     screenings.index
 @stop

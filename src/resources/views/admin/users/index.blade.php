@@ -1,6 +1,6 @@
 @extends('layouts.datatables');
 
-@section('content')
+@section('main_container')
  {!! $dataTable->table() !!}
 @endsection
 

@@ -1,5 +1,5 @@
-@extends('layouts.master')
+@extends('layouts.guest')
 
-@section('content')
+@section('main_container')
     Bine ai venit!
 @stop
