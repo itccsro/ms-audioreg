@@ -16,10 +16,12 @@ class UsersController extends Controller
     }
 
     public function showDoctorUsers(UsersDoctorDataTable $dataTable) {
-        return $dataTable->addScope(new UsersTypeDataTableScope(\App\Role::DOCTOR))->render('admin.users.index');
+        return $dataTable->addScope(new UsersTypeDataTableScope(\App\Role::DOCTOR))
+                         ->render('admin.users.index', ['users_type' => 'Medici']);
     }
 
     public function showAdminUsers(UsersAdminDataTable $dataTable) {
-        return $dataTable->addScope(new UsersTypeDataTableScope(\App\Role::ADMIN))->render('admin.users.index');
+        return $dataTable->addScope(new UsersTypeDataTableScope(\App\Role::ADMIN))
+                         ->render('admin.users.index', ['users_type' => 'Aministratori']);
     }
 }
