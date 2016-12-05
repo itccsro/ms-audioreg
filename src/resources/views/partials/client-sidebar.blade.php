@@ -26,22 +26,16 @@
                 <div class="clearfix"></div></div>
                 <ul class="nav side-menu">
                     <li>
-                        <a href="{{ url('/admin') }}">
-                            <i class="fa fa-laptop"></i>
-                            Dashboard
+                        <a href="{{ url('/uploads') }}">
+                            <i class="fa fa-database"></i>
+                            Istoric
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin/patients') }}">
-                            <i class="fa fa-table"></i>
-                            Screenings
+                        <a href="{{ url('/uploads/new') }}">
+                            <i class="fa fa-file"></i>
+                            Fișier nou
                         </a>
-                    </li>
-                    <li><a><i class="fa fa-users"></i> Utilizatori <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{ url('/admin/users/users-admin') }}"><i class="fa fa-user"></i>Administratori</a></li>
-                            <li><a href="{{ url('/admin/users/users-doctor') }}"><i class="fa fa-user-md"></i>Medici</a></li>
-                        </ul>
                     </li>
                 </ul>
             </div>

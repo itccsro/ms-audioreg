@@ -2,7 +2,6 @@
 
 namespace App\DataTables;
 
-use App\User;
 use Yajra\Datatables\Datatables;
 use Yajra\Datatables\Services\DataTable;
 use DB;
@@ -30,7 +29,6 @@ class UsersDoctorDataTable extends DataTable
      */
     public function query()
     {
-
         $query = DB::table('users')
                 ->leftJoin('institutions', 'users.institution_id', '=', 'institutions.id')
                 ->select($this->getDataColumns());
