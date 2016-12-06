@@ -1,1 +1,1 @@
-# Registrul Național de Screening Auditiv
+# Registrul Electronic Național de Screening Auditiv
