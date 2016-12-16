@@ -12,7 +12,7 @@
                 <img src="{{ asset("images/img.jpg") }}" alt="Avatar of {{ Auth::user()->name }}" class="img-circle profile_img">
             </div>
             <div class="profile_info">
-                <span>Welcome,</span>
+                <span>Bine ați venit,</span>
                 <h2>{{ Auth::user()->name }}</h2>
             </div>
         </div>
@@ -28,7 +28,7 @@
                     <li>
                         <a href="{{ url('/admin') }}">
                             <i class="fa fa-laptop"></i>
-                            Dashboard
+                            Panou de bord
                         </a>
                     </li>
                     <li>

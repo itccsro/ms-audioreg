@@ -1,0 +1,22 @@
+{
+  "name": "bower.json",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/gov-ithub/ms-audioreg",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flot.orderbars": "^1.0.0",
+    "flot-spline": "^0.8.2",
+    "flot.curvedlines": "^1.1.1",
+    "daterangepicker": "^1.5.3",
+    "datepicker": "*",
+    "bootstrap-progressbar": "^0.9.0"
+  }
+}

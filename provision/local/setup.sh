@@ -28,8 +28,7 @@ a2dissite 000-default
 service apache2 restart
 
 echo "Installing Composer..."
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 cd $src && composer install
 cd -
 

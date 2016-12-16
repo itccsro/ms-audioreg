@@ -10,10 +10,14 @@
 <!-- Styles -->
 <!-- Bootstrap -->
 <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet">
+
 <!-- Font Awesome -->
 <link href="{{ asset("css/font-awesome.min.css") }}" rel="stylesheet">
 
 <link rel="stylesheet" href="{{asset('css/iCheck-green.css')}}" />
+
+<link href="{{ asset("css/bootstrap-progressbar.min.css") }}" rel="stylesheet">
+<link href="{{ asset("css/jquery-jvectormap.css") }}" rel="stylesheet">
 
 @stack('styles')
 
